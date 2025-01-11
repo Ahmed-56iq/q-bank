@@ -17,8 +17,8 @@ class UserResource extends JsonResource
             'full_name' => $this->full_name,
             'email' => $this->email,
             'is_admin' => $this->is_admin,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'created_at' => $this->created_at,
+            // 'updated_at' => $this->updated_at,
 
             // إضافة token فقط عند تسجيل الدخول
             'token' => $this->when($this->token, $this->token),

@@ -20,7 +20,7 @@ class UserController extends Controller
 
         $user = Auth::user();
         $user->token = $user->createToken('token')->plainTextToken; //->accessToken;
-        $user = ['id' => $user->id,'name' => $user->name,'is_admin' => $user->is_admin,'token' => $user->token,];
+        // $user = ['id' => $user->id,'name' => $user->name,'is_admin' => $user->is_admin,'token' => $user->token,];
         return new UserResource($user);
         return   $user ;
 

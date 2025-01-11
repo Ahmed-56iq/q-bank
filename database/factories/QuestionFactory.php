@@ -34,7 +34,7 @@ class QuestionFactory extends Factory
             'answer_4' => $answers[3],
             'correct_answer' => $correctAnswer,
             'summary_answer' => $this->faker->paragraph(),
-            'code' => $this->faker->boolean(30) ? $this->faker->text() : null,
+            'code' =>$this->faker->regexify('[A-Za-z0-9]{10}'),
             'classify_id' => Classify::factory(),
         ];
     }

@@ -24,7 +24,7 @@ class QuestionResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 
-            'class_id' => $this->class_id,
+            'classify_id' => $this->classify_id,
         ];
     }
 }
