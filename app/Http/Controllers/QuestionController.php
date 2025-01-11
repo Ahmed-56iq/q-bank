@@ -13,6 +13,11 @@ class QuestionController extends Controller
         return QuestionResource::collection(Question::all());
     }
 
+    public function getByClassify($classify)
+    {
+        return QuestionResource::collection(Question::where('classify_id', $classify)->get());
+    }
+
     public function store(QuestionRequest $request)
     {
         return new QuestionResource(Question::create($request->validated()));

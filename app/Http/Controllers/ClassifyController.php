@@ -13,6 +13,11 @@ class ClassifyController extends Controller
         return ClassifyResource::collection(classify::all());
         }
 
+    public function getByCategory($category)
+    {
+        return ClassifyResource::collection(classify::where('category_id', $category)->get());
+        }
+
     public function store(ClassifyRequest $request)
     {
         return new ClassifyResource(classify::create($request->validated()));

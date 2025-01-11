@@ -24,12 +24,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Route::apiResource('questions', QuestionController::class);
 
     Route::get('/questions', [QuestionController::class, 'index']);
+    Route::get('/classify/{classify}', [QuestionController::class, 'getByClassify']);
     Route::get('/questions/{question}', [QuestionController::class, 'show']);
     Route::post('/questions', [QuestionController::class, 'store']);
     Route::put('/questions/{question}', [QuestionController::class, 'update']);
     Route::delete('/questions/{question}', [QuestionController::class, 'destroy']);
 
     Route::get('/classifies', [ClassifyController::class, 'index']);
+    Route::get('/category/{category}', [ClassifyController::class, 'getByCategory']);
     Route::get('/classifies/{classify}', [ClassifyController::class, 'show']);
     Route::post('/classifies', [ClassifyController::class, 'store']);
     Route::put('/classifies/{classify}', [ClassifyController::class, 'update']);
