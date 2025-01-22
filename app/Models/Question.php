@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
+
 
 class Question extends Model
 {
@@ -20,11 +22,26 @@ class Question extends Model
         'correct_answer',
         'summary_answer',
         'code',
-        'class_id',
+        'classify_id',
     ];
 
-    public function class(): BelongsTo
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::creating(function ($model) {
+            $model->code = Str::random(13);
+        });
+    }
+
+    public function classify(): BelongsTo
     {
         return $this->belongsTo(Classify::class);
-        }
+    }
+
+    public function getCorrectAnswerAttribute($value)
+    {
+        return $this->attributes['correct_answer'] = $value;
+    }
+
 }

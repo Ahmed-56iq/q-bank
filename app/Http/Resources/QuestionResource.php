@@ -26,7 +26,7 @@ class QuestionResource extends JsonResource
 
             'classify_id' => $this->classify_id,
 
-            'classify' => $this->classify->get('id', 'name'),
+            'classify' => $this->classify->only('id', 'name','is_enable') ?? null,
             // 'classify' => new ClassifyResource($this->classify),
         ];
     }

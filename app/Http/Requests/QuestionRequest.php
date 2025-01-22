@@ -17,7 +17,7 @@ class QuestionRequest extends FormRequest
             'correct_answer' => ['required'],
             'summary_answer' => ['required'],
             'code' => ['nullable'],
-            'class_id' => ['required'],
+            'classify_id' => ['required', 'exists:classifies,id'],
         ];
     }
 

@@ -20,7 +20,7 @@ class ClassifyResource extends JsonResource
 
             'category_id' => $this->category_id,
 
-            'category' => $this->category->get('id', 'name'),
+            'category' => $this->category->only('id', 'name', 'is_enable'),
             // 'category' => new CategoryResource($this->category),
         ];
     }
