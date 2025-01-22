@@ -25,6 +25,10 @@ class QuestionResource extends JsonResource
             'updated_at' => $this->updated_at,
 
             'classify_id' => $this->classify_id,
+
+            'classify' => $this->classify->get('id', 'name'),
+            // 'classify' => new ClassifyResource($this->classify),
         ];
     }
 }
+

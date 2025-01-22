@@ -11,7 +11,7 @@ class ClassifyRequest extends FormRequest
         return [
             'name' => ['required'],
             'is_enable' => ['boolean'],
-            'category_id' => ['required', 'exists:categories'],
+            'category_id' => ['required', 'exists:categories,id'],
         ];
     }
 
