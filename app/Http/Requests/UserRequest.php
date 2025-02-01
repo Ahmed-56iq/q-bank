@@ -19,6 +19,7 @@ class UserRequest extends FormRequest
             'full_name' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'is_admin' => ['boolean'],
+            'student_id' => ['nullable', 'exists:students,id'],
         ];
 
         // إضافة قواعد كلمة المرور فقط عند إنشاء مستخدم جديد أو تحديث كلمة المرور

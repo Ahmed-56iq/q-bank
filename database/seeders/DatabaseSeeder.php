@@ -17,14 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call([
+            RolesAndPermissionsSeeder::class,
+        ]);
 
-        User::factory()->create([
+        // إنشاء مستخدم مدير
+        $admin = User::factory()->create([
             'name' => 'admin',
             'full_name' => 'الدوق فليد',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
+            'is_admin' => true,
         ]);
+        $admin->assignRole('admin');
 
         Category::factory(3)
             ->has(

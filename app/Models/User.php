@@ -4,17 +4,19 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable , HasApiTokens;
+    use HasFactory, Notifiable , HasApiTokens , HasRoles;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are mass assignable.ق
      *
      * @var list<string>
      */
@@ -24,6 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
+        'student_id',
     ];
 
     /**
@@ -49,5 +52,10 @@ class User extends Authenticatable
             'is_admin' => 'boolean',
             'token' => 'string',
         ];
+    }
+
+    public function student(): BelongsTo
+    {
+        return $this->belongsTo(Student::class , 'student_id' , 'id');
     }
 }
