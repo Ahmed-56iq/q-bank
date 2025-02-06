@@ -26,7 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
-        'student_id',
+        'user_id',
     ];
 
     /**
@@ -54,8 +54,5 @@ class User extends Authenticatable
         ];
     }
 
-    public function student(): BelongsTo
-    {
-        return $this->belongsTo(Student::class , 'student_id' , 'id');
-    }
+
 }

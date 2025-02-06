@@ -9,10 +9,10 @@ class SubscriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'student_id' => ['required', 'exists:students'],
+            'user_id' => ['required', 'exists:users,id'],
             'subscription_type_id' => ['required', 'exists:subscription_types'],
             'is_enable' => ['boolean'],
-            'Subscription_code' => ['nullable'],
+            'subscription_code' => ['nullable'],
         ];
     }
 

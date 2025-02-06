@@ -11,20 +11,20 @@ class Subscription extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'student_id',
+        'user_id',
         'subscription_type_id',
         'is_enable',
-        'Subscription_code',
+        'subscription_code',
     ];
 
-    public function student(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function subscriptionType(): BelongsTo
     {
-        return $this->belongsTo(SubscriptionType::class);
+        return $this->belongsTo(SubscriptionType::class, 'subscription_type_id', 'id');
     }
 
     protected function casts(): array

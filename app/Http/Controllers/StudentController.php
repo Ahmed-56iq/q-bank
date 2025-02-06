@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StudentRequest;
 use App\Http\Resources\StudentResource;
 use App\Models\Student;
+use App\Models\User;
 
 class StudentController extends Controller
 {
@@ -15,7 +16,13 @@ class StudentController extends Controller
 
     public function store(StudentRequest $request)
     {
-        return new StudentResource(Student::create($request->validated()));
+        // $student = Student::create($request->validated());
+        // $user = User::create($request->validated());
+        // $user->assignRole('student');
+        // $user->student_id = $student->id;
+        // $user->save();
+
+        // return new StudentResource($student);
     }
 
     public function show(Student $student)

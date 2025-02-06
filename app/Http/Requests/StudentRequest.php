@@ -9,10 +9,10 @@ class StudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'full_name' => ['nullable'],
-            'university' => ['nullable'],
-            'college' => ['nullable'],
-            'department' => ['nullable'],
+            'user_id' => ['required', 'exists:users,id'],
+            'university_id' => ['nullable', 'integer', 'exists:universities,id'],
+            'college_id' => ['nullable', 'integer', 'exists:colleges,id'],
+            'department_id' => ['nullable', 'integer', 'exists:departments,id'],
         ];
     }
 

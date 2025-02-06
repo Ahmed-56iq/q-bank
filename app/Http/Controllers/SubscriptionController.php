@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SubscriptionRequest;
 use App\Http\Resources\SubscriptionResource;
 use App\Models\Subscription;
+use Illuminate\Support\Str;
+
 
 class SubscriptionController extends Controller
 {
@@ -15,7 +17,10 @@ class SubscriptionController extends Controller
 
     public function store(SubscriptionRequest $request)
     {
-        return new SubscriptionResource(Subscription::create($request->validated()));
+        $subscription = Subscription::create($request->safe()->except('subscription_code')
+        + ['subscription_code' => "@" . Str::random(10)]);
+
+        return new SubscriptionResource($subscription);
     }
 
     public function show(Subscription $subscription)

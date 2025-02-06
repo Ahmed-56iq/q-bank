@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +54,27 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         return new UserResource(User::create($request->validated())) ;
+    }
+
+    public function storeStudent(UserRequest $request)
+    {
+        $user = User::create($request->validated());
+        $user->assignRole('student');
+
+        $validated = $request->validate([
+            'university_id' => ['nullable', 'integer', 'exists:universities,id'],
+            'college_id' => ['nullable', 'integer', 'exists:colleges,id'],
+            'department_id' => ['nullable', 'integer', 'exists:departments,id'],
+        ]);
+
+        $student = Student::create([
+            'user_id' => $user->id,
+            'university_id' => $validated['university_id'] ?? null,
+            'college_id' => $validated['college_id'] ?? null,
+            'department_id' => $validated['department_id'] ?? null,
+        ]);
+
+        return new UserResource($user);
     }
 
     public function show(User $user)

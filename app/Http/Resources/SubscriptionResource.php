@@ -14,15 +14,15 @@ class SubscriptionResource extends JsonResource
         return [
             'id' => $this->id,
             'is_enable' => $this->is_enable,
-            'Subscription_code' => $this->Subscription_code,
+            'subscription_code' => $this->subscription_code,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 
-            'student_id' => $this->student_id,
+            'user_id' => $this->user_id,
             'subscription_type_id' => $this->subscription_type_id,
 
-            'student' => new StudentResource($this->whenLoaded('student')),
-            'subscriptionType' => new SubscriptionTypeResource($this->whenLoaded('subscriptionType')),
+            'user' => new UserResource($this->user),
+            'subscriptionType' => new SubscriptionTypeResource($this->subscriptionType),
         ];
     }
 }

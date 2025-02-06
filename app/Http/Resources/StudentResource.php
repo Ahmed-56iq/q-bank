@@ -13,12 +13,15 @@ class StudentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'full_name' => $this->full_name,
-            'university' => $this->university,
-            'college' => $this->college,
-            'department' => $this->department,
+            'user_id' => $this->user_id,
+            'university_id' => $this->university_id,
+            'college_id' => $this->college_id,
+            'department_id' => $this->department_id,
+            'university' => new UniversityResource($this->university)   ,
+            'college' => new CollegeResource($this->college),
+            'department' => new DepartmentResource($this->department),
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'updated_at' => $this->updated_at,
         ];
     }
 }
