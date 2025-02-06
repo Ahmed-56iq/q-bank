@@ -10,12 +10,12 @@ class ClassifyController extends Controller
 {
     public function index()
     {
-        return ClassifyResource::collection(classify::all());
+        return ClassifyResource::collection(classify::withCount('question')->get());
         }
 
     public function getByCategory($category)
     {
-        return ClassifyResource::collection(classify::where('category_id', $category)->get());
+        return ClassifyResource::collection(classify::where('category_id', $category)->withCount('question')->get());
         }
 
     public function store(ClassifyRequest $request)
@@ -25,20 +25,19 @@ class ClassifyController extends Controller
 
     public function show(Classify $classify)
         {
-        return new ClassifyResource($classify);
+        return new ClassifyResource($classify->loadCount('question'));
         }
 
-public
-function update(ClassifyRequest $request, Classify $classify)
+public function update(ClassifyRequest $request, Classify $classify)
         {
             $classify->update($request->validated());
 
             return new ClassifyResource($classify);
         }
 
-        public function destroy(classify $classify)
-        {
-            $classify->delete();
+    public function destroy(Classify $classify)
+    {
+        $classify->delete();
 
             return response()->json();
         }

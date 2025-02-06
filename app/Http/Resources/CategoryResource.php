@@ -17,6 +17,7 @@ class CategoryResource extends JsonResource
             'is_enable' => $this->is_enable,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'classify_count' => $this->classify_count,
         ];
     }
 }
