@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\SubscriptionTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -55,5 +56,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('/users/{user}', [UserController::class, 'update']);
     Route::delete('/users/{user}', [UserController::class, 'destroy']);
 
+    Route::group(['prefix' => 'subscription-type'], function () {
+        Route::get('/', [SubscriptionTypeController::class, 'index']);
+        Route::get('/{subscriptionType}', [SubscriptionTypeController::class, 'show']);
+        Route::post('/', [SubscriptionTypeController::class, 'store']);
+        Route::put('/{subscriptionType}', [SubscriptionTypeController::class, 'update']);
+        Route::delete('/{subscriptionType}', [SubscriptionTypeController::class, 'destroy']);
+    });
 });
 
