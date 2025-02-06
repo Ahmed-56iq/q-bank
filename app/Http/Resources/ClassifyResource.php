@@ -16,10 +16,7 @@ class ClassifyResource extends JsonResource
             'name' => $this->name,
             'is_enable' => $this->is_enable,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-
-            'category_id' => $this->category_id,
-
+            'question_count' => $this->question_count,
             'category' => $this->category->only('id', 'name', 'is_enable'),
             // 'category' => new CategoryResource($this->category),
         ];
