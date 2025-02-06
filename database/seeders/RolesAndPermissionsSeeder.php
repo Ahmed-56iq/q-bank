@@ -16,28 +16,34 @@ class RolesAndPermissionsSeeder extends Seeder
         // إنشاء الصلاحيات
         $permissions = [
             // صلاحيات المستخدمين
-            'عرض المستخدمين',
-            'إضافة مستخدم',
-            'تعديل مستخدم',
-            'حذف مستخدم',
+            'show-users',
+            'add-user',
+            'edit-user',
+            'delete-user',
+
+            // صلاحيات فئة
+            'show-categories',
+            'add-category',
+            'edit-category',
+            'delete-category',
 
             // صلاحيات التصنيفات
-            'عرض التصنيفات',
-            'إضافة تصنيف',
-            'تعديل تصنيف',
-            'حذف تصنيف',
+            'show-classifies',
+            'add-classify',
+            'edit-classify',
+            'delete-classify',
 
             // صلاحيات الأسئلة
-            'عرض الأسئلة',
-            'إضافة سؤال',
-            'تعديل سؤال',
-            'حذف سؤال',
+            'show-questions',
+            'add-question',
+            'edit-question',
+            'delete-question',
 
             // صلاحيات الاشتراكات
-            'عرض الاشتراكات',
-            'إضافة اشتراك',
-            'تعديل اشتراك',
-            'حذف اشتراك',
+            'show-subscriptions',
+            'add-subscription',
+            'edit-subscription',
+            'delete-subscription',
         ];
 
         foreach ($permissions as $permission) {
@@ -50,20 +56,22 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $role = Role::create(['name' => 'supervisor']);
         $role->givePermissionTo([
-            'عرض المستخدمين',
-            'عرض التصنيفات',
-            'إضافة تصنيف',
-            'تعديل تصنيف',
-            'عرض الأسئلة',
-            'إضافة سؤال',
-            'تعديل سؤال',
-            'عرض الاشتراكات',
+            'show-users',
+            'show-categories',
+            'add-category',
+            'edit-category',
+            'show-questions',
+            'add-question',
+            'edit-question',
+            'show-subscriptions',
+            'add-subscription',
+            'edit-subscription',
         ]);
 
         $role = Role::create(['name' => 'student']);
         $role->givePermissionTo([
-            'عرض التصنيفات',
-            'عرض الأسئلة',
+            'show-categories',
+            'show-questions',
         ]);
     }
 }

@@ -23,6 +23,7 @@ class UserResource extends JsonResource
 
             // إضافة token فقط عند تسجيل الدخول
             'token' => $this->when($this->token, $this->token),
+            'role' => $this->when($this->role, $this->role),
         ];
     }
 }
