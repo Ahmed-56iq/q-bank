@@ -16,12 +16,7 @@ class SubscriptionResource extends JsonResource
             'is_enable' => $this->is_enable,
             'subscription_code' => $this->subscription_code,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-
-            'user_id' => $this->user_id,
-            'subscription_type_id' => $this->subscription_type_id,
-
-            'user' => new UserResource($this->user),
+            'user' => $this->user->only('id','full_name'),
             'subscriptionType' => new SubscriptionTypeResource($this->subscriptionType),
         ];
     }
