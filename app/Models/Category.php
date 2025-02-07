@@ -18,6 +18,6 @@ class Category extends Model
 
     public function classifies(): HasMany
     {
-        return $this->hasMany(Classify::class);
+        return $this->hasMany(Classify::class , 'category_id' , 'id');
     }
 }

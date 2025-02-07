@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return CategoryResource::collection(Category::withCount('classify')->get());
+        return CategoryResource::collection(Category::withCount('classifies')->get());
     }
 
     public function store(CategoryRequest $request)
@@ -20,7 +20,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return new CategoryResource($category->loadCount('classify'));
+        return new CategoryResource($category->loadCount(relations: 'classifies'));
     }
 
     public function update(CategoryRequest $request, Category $category)
