@@ -17,7 +17,7 @@ class DepartmentResource extends JsonResource
             'created_at' => $this->created_at,
             // 'updated_at' => $this->updated_at,
             'college_id' => $this->college_id,
-            'college' => new CollegeResource($this->college),
+            'college' => ($this->college->only('id', 'name')),
         ];
     }
 }

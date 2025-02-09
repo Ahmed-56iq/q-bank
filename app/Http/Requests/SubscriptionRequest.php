@@ -10,7 +10,7 @@ class SubscriptionRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'exists:users,id'],
-            'subscription_type_id' => ['required', 'exists:subscription_types'],
+            'subscription_type_id' => ['required', 'exists:subscription_types,id'],
             'is_enable' => ['boolean'],
             'subscription_code' => ['nullable'],
         ];

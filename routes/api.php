@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('/', [SubscriptionTypeController::class, 'store']);
         Route::put('/{subscriptionType}', [SubscriptionTypeController::class, 'update']);
         Route::delete('/{subscriptionType}', [SubscriptionTypeController::class, 'destroy']);
+    });
 
         Route::group(['prefix' => 'subscription'], function () {
             Route::get('/', [SubscriptionController::class, 'index']);
@@ -97,10 +98,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
         Route::group(['prefix' => 'department'], function () {
             Route::get('/', [DepartmentController::class, 'index']);
-            Route::get('/{department}', [DepartmentController::class, 'show']);
-            Route::post('/', [DepartmentController::class, 'store']);
-            Route::put('/{department}', [DepartmentController::class, 'update']);
-            Route::delete('/{department}', [DepartmentController::class, 'destroy']);
-        });
+        Route::get('/{department}', [DepartmentController::class, 'show']);
+        Route::post('/', [DepartmentController::class, 'store']);
+        Route::put('/{department}', [DepartmentController::class, 'update']);
+        Route::delete('/{department}', [DepartmentController::class, 'destroy']);
     });
 });

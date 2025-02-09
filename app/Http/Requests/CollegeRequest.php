@@ -10,7 +10,7 @@ class CollegeRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'university_id' => ['required', 'exists:universities'],
+            'university_id' => ['required', 'exists:universities,id'],
         ];
     }
 

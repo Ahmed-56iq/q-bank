@@ -10,7 +10,7 @@ class DepartmentRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'college_id' => ['required', 'exists:colleges'],
+            'college_id' => ['required', 'exists:colleges,id'],
         ];
     }
 
