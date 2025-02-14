@@ -5,6 +5,7 @@ use App\Http\Controllers\ClassifyController;
 use App\Http\Controllers\CollegeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\SubscriptionTypeController;
 use App\Http\Controllers\UniversityController;
@@ -63,6 +64,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::delete('/{user}', [UserController::class, 'destroy']);
     });
 
+    Route::group(['prefix' => 'student'], function () {
+        Route::get('/', [StudentController::class, 'index']);
+        Route::get('/{student}', [StudentController::class, 'show']);
+        Route::post('/', [StudentController::class, 'store']);
+        Route::put('/{student}', [StudentController::class, 'update']);
+        Route::delete('/{student}', [StudentController::class, 'destroy']);
+    });
 
     Route::group(['prefix' => 'subscription-type'], function () {
         Route::get('/', [SubscriptionTypeController::class, 'index']);
