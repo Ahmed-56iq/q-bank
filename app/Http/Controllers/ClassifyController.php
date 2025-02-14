@@ -10,12 +10,12 @@ class ClassifyController extends Controller
 {
     public function index()
     {
-        return ClassifyResource::collection(classify::withCount('question')->get());
+        return ClassifyResource::collection(classify::withCount(relations: 'questions')->get());
         }
 
     public function getByCategory($category)
     {
-        return ClassifyResource::collection(classify::where('category_id', $category)->withCount('question')->get());
+        return ClassifyResource::collection(classify::where('category_id', $category)->withCount(relations: 'questions')->get());
         }
 
     public function store(ClassifyRequest $request)
@@ -25,7 +25,7 @@ class ClassifyController extends Controller
 
     public function show(Classify $classify)
         {
-        return new ClassifyResource($classify->loadCount('question'));
+        return new ClassifyResource($classify->loadCount(relations: 'questions'));
         }
 
 public function update(ClassifyRequest $request, Classify $classify)
