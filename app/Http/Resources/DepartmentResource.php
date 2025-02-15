@@ -15,7 +15,6 @@ class DepartmentResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'created_at' => $this->created_at,
-            // 'updated_at' => $this->updated_at,
             'college_id' => $this->college_id,
             'college' => ($this->college->only('id', 'name')),
         ];

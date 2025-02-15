@@ -25,9 +25,6 @@ Route::post('/register', [UserController::class, 'register']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/logout', [UserController::class, 'logout']);
 
-    // Route::apiResource('categories', CategoryController::class);
-    // Route::apiResource('classifies', ClassifyController::class);
-    // Route::apiResource('questions', QuestionController::class);
 
     Route::group(['prefix' => 'question'], function () {
         Route::get('/', [QuestionController::class, 'index']);
