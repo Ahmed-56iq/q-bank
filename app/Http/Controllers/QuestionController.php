@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\QuestionRequest;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
+use Illuminate\Support\Benchmark;
 
 class QuestionController extends Controller
 {
@@ -15,6 +16,8 @@ class QuestionController extends Controller
 
     public function getByClassify($classify)
     {
+        //  Benchmark::measure(fn() => QuestionResource::collection(Question::all()));
+
         return QuestionResource::collection(Question::where('classify_id', $classify)->get());
     }
 

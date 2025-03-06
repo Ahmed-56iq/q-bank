@@ -18,7 +18,7 @@ class StudentResource extends JsonResource
             'college_id' => $this->college_id,
             'department_id' => $this->department_id,
             'user'=> new UserResource($this->user) ,
-            'university' => new UniversityResource($this->university)   ,
+            'university' => new UniversityResource($this->university),
             'college' => new CollegeResource($this->college),
             'department' => new DepartmentResource($this->department),
             'created_at' => $this->created_at,

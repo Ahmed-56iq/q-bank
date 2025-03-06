@@ -13,19 +13,22 @@ class UserController extends Controller
 {
     public function login(Request $request)
     {
-        if(!Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
-            abort(422,'المعلومات غير صحيحة');
-//            return  response()->json('المعلومات غير صحيحة' . " ".response()->json( $request), 442);
+        if (!Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
+            // abort(422,'المعلومات غير صحيحة');
+            return response()->json([
+                'data' => [
+                    'message' => 'المعلومات غير صحيحة'
+                ]
+            ], 422);
         }
-        /** @var \App\Models\User $user */
 
+        /** @var \App\Models\User $user */
         $user = Auth::user();
         $user->token = $user->createToken('token')->plainTextToken; //->accessToken;
         $user->role = $user->getRoleNames();
         // $user = ['id' => $user->id,'name' => $user->name,'is_admin' => $user->is_admin,'token' => $user->token,];
         return new UserResource($user);
-        return   $user ;
-
+        return   $user;
     }
 
     public function logout()
@@ -40,7 +43,6 @@ class UserController extends Controller
         return response()->json([
             'status' => false,
         ], 500);
-
     }
 
 
@@ -53,7 +55,7 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        return new UserResource(User::create($request->validated())) ;
+        return new UserResource(User::create($request->validated()));
     }
 
     public function storeStudent(UserRequest $request)
@@ -76,6 +78,7 @@ class UserController extends Controller
 
         return new UserResource($user);
     }
+
 
     public function show(User $user)
     {
