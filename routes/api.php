@@ -23,7 +23,7 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
 
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
+// Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/logout', [UserController::class, 'logout']);
 
 
@@ -134,4 +134,4 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::put('/{department}', [DepartmentController::class, 'update']);
         Route::delete('/{department}', [DepartmentController::class, 'destroy']);
     });
-});
+// });
